@@ -31,9 +31,9 @@ function getCommo() {
     function cleanData(data) {
         let x = {}
         for (let symbol in data.data.rates) {
-            if (symbol == "SOYBEAN") x.Soya = (1 / data.data.rates[symbol] / 36.7437 * 1000).toFixed(3)
-            else if (symbol == "BRENTOIL") x.Råolje = (1 / data.data.rates[symbol]).toFixed(3)
-            else if (symbol == "EUR") x.Euro = (data.data.rates.NOK / data.data.rates.EUR).toFixed(3)
+            if (symbol == "SOYBEAN") x.Soya = 1 / data.data.rates[symbol] / 36.7437 * 1000
+            else if (symbol == "BRENTOIL") x.Råolje = 1 / data.data.rates[symbol]
+            else if (symbol == "EUR") x.Euro = data.data.rates.NOK / data.data.rates.EUR
         }
         return x
     }
@@ -42,8 +42,8 @@ function getCommo() {
         let x = {}
         for (let symbol in data[0]) {
             x[symbol] = { 
-                now: data[0][symbol],
-                yesterday: data[1][symbol],
+                now: data[0][symbol].toFixed(1),
+                yesterday: data[1][symbol].toFixed(1),
                 change: ((parseFloat(data[0][symbol]) / parseFloat(data[1][symbol]) - 1) * 100).toPrecision(2)
             }
         }
