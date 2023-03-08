@@ -24,32 +24,40 @@ function getCommo() {
         }
     }
 
-    function cleanData(data) {
-        let rates = data.data.rates
-        for (let symbol in rates) {
-            if (symbol == "SOYBEAN") rates.SOYBEAN = (1 / rates[symbol] / 36.7437 * 1000).toFixed(3)
-            else if (symbol == "BRENTOIL") rates.BRENTOIL = (1 / rates[symbol]).toFixed(3)
-            else if (symbol == "EUR") rates.EUR = (rates.NOK / rates.EUR).toFixed(3)
-            else if (symbol == "USD" || symbol == "NOK") delete rates[symbol]
-        }
-        return rates
-    }
-
     // Add commo requests to loop
     requests.push({name: "latest", url: commo.urlBase + "latest" + commo.urlParam()})
     requests.push({name: "yesterday", url: commo.urlBase + yesterday.toISOString().substring(0,10) + commo.urlParam()})
     
+    function cleanData(data) {
+        let x = {}
+        for (let symbol in data.data.rates) {
+            if (symbol == "SOYBEAN") x.Soya = (1 / data.data.rates[symbol] / 36.7437 * 1000).toFixed(3)
+            else if (symbol == "BRENTOIL") x.Råolje = (1 / data.data.rates[symbol]).toFixed(3)
+            else if (symbol == "EUR") x.Euro = (data.data.rates.NOK / data.data.rates.EUR).toFixed(3)
+        }
+        return x
+    }
 
-    // Fetch all, clean and return requests array
+    function formatData(data) {
+        let x = {}
+        for (let symbol in data[0]) {
+            x[symbol] = { 
+                now: data[0][symbol],
+                yesterday: data[1][symbol],
+                change: ((parseFloat(data[0][symbol]) / parseFloat(data[1][symbol]) - 1) * 100).toPrecision(2)
+            }
+        }
+        return x
+    }
+
     async function goGet() {
         let data = await Promise.all(requests.map(r =>
-            fetch(r.url).then(resp => resp.json()).then(data => cleanData(data))
+            fetch(r.url)
+            .then(resp => resp.json())
+            .then(data => cleanData(data))
         ))
-        data.map((d,i) => {       
-            requests[i].data = d
-        })
-        return requests
-    }
+        return formatData(data)
+    } 
 
     return goGet()
 }

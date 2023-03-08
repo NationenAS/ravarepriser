@@ -40,3 +40,15 @@ getEl()
 })
 .then(result => res.send(result))
 .catch(error => res.send(error))
+
+
+/* Fetch all, clean and return requests array
+async function goGet() {
+    let data = await Promise.all(requests.map(r =>
+        fetch(r.url).then(resp => resp.json()).then(data => cleanData(data))
+    ))
+    data.map((d,i) => {       
+        requests[i].data = d
+    })
+    return requests
+} */

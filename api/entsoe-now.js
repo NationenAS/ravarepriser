@@ -21,8 +21,8 @@ function getEl(commo) {
         start: entsoeDateTime(yesterday, '0000'),
         end: entsoeDateTime(tomorrow, '2300'),
         domains: [
-            ['Oslo', '10YNO-1--------2'],
-            ['Tromsø', '10YNO-4--------9']
+            ['Øst', '10YNO-1--------2'],
+            ['Nord', '10YNO-4--------9']
         ],
         urlBase: 'https://web-api.tp.entsoe.eu/api',
         urlParam: function () {
@@ -42,7 +42,8 @@ function getEl(commo) {
         return points.reduce((sum, p) => sum + p, 0) / 24
       }
 
-    let eur = commo[commo.findIndex(e => e.name == "latest")].data.EUR
+    // let eur = commo[commo.findIndex(e => e.name == "latest")].data.EUR
+    let eur = commo.Euro.now
 
     function cleanData(data) {
         let days = data.Publication_MarketDocument.TimeSeries.map(d => {
