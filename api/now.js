@@ -35,6 +35,7 @@ export default async function handler(req, res) {
         data: domain.data
       }
       x.symbols.Strøm[domain.name].change = ((parseFloat(domain.data[1].avg) / parseFloat(domain.data[0].avg) - 1) * 100).toFixed(1)
+      x.symbols.Strøm[domain.name].avg = domain.data[1].avg
     })
     for (let symbol in commo) {
       x.symbols[symbol] = commo[symbol]
