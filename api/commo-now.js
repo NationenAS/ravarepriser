@@ -17,7 +17,7 @@ function getCommo() {
     let commo = {
         accessKey: 'ty2dpo40x38kyood3mzwd31lnik04p6y7hzj7l1wsu67548xd4yuj58np0rz',
         base: 'USD',
-        symbols: 'SOYBEAN,BRENTOIL,NOK,EUR',
+        symbols: 'SOYBEAN,BRENTOIL,NOK,EUR,TGJ23',
         urlBase: 'https://www.commodities-api.com/api/',
         urlParam: function() { 
             return `?access_key=${this.accessKey}&base=${this.base}&symbols=${this.symbols}`
@@ -34,6 +34,7 @@ function getCommo() {
             if (symbol == "SOYBEAN") x.Soya = 1 / data.data.rates[symbol] / 36.7437 * 1000
             else if (symbol == "BRENTOIL") x.Råolje = 1 / data.data.rates[symbol]
             else if (symbol == "EUR") x.Euro = data.data.rates.NOK / data.data.rates.EUR
+            else if (symbol == "TGJ23") x.Gass = 1 / data.data.rates[symbol]
         }
         return x
     }

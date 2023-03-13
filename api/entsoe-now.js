@@ -43,10 +43,10 @@ function getEl(commo) {
       }
 
     // let eur = commo[commo.findIndex(e => e.name == "latest")].data.EUR
-    let eur = commo.Euro.now
+    let eur = commo.Euro.yesterday
 
     function cleanData(data) {
-        let days = data.Publication_MarketDocument.TimeSeries.map(d => {
+        let days = data.Publication_MarketDocument.TimeSeries.map(d, i => {
             let hours = d.Period.Point.map(p => p["price.amount"] * eur / 10)
             return { 
                 hours: hours.map(d => d.toFixed(2)),
