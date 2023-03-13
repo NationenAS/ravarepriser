@@ -46,7 +46,7 @@ function getEl(commo) {
     let eur = commo.Euro.yesterday
 
     function cleanData(data) {
-        let days = data.Publication_MarketDocument.TimeSeries.map(d, i => {
+        let days = data.Publication_MarketDocument.TimeSeries.map(d => {
             let hours = d.Period.Point.map(p => p["price.amount"] * eur / 10)
             return { 
                 hours: hours.map(d => d.toFixed(2)),
