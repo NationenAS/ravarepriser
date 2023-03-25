@@ -38,8 +38,8 @@ function getEl(commo) {
     })
 
     function getAverage(points) {
-        if (points.length !== 24) return false // CET/CEST-days have 25 points
-        return points.reduce((sum, p) => sum + p, 0) / 24
+        // if (points.length !== 24) return false // CET/CEST-days have 25 points
+        return points.reduce((sum, p) => sum + p, 0) / points.length
       }
 
     // let eur = commo[commo.findIndex(e => e.name == "latest")].data.EUR
@@ -62,7 +62,11 @@ function getEl(commo) {
             fetch(r.url)
             .then(resp => resp.text())
             .then(data => parser.parse(data)) // Parse XML
-            .then(parsed => cleanData(parsed)) // Format and clean
+            .then(parsed => {
+                console.log(parsed)
+                console.log(cleanData(parsed))
+                return cleanData(parsed)
+            }) // Format and clean
         ))
         data.map((d,i) => requests[i].data = d) // Merge with requests
         return requests
