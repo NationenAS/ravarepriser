@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version')
   
   // Enable cache
-  res.setHeader('Cache-Control', 's-maxage=3600') // 1 hour
+  res.setHeader('Cache-Control', 's-maxage=7200') // 1 hour
 
   
   // ----- //
