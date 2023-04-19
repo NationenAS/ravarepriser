@@ -1,6 +1,5 @@
 function getCommo() {
 
-
     let requests = [],
         today = new Date(),
         yesterday = new Date(today)  
@@ -31,7 +30,7 @@ function getCommo() {
             if (symbol == "SOYBEAN") x.Soya = 1 / data.data.rates[symbol] / 36.7437 * 1000
             else if (symbol == "BRENTOIL") x.Råolje = 1 / data.data.rates[symbol]
             else if (symbol == "EUR") x.Euro = data.data.rates.NOK / data.data.rates.EUR
-            else if (symbol == "TGJ23") x.Gass = 1 / data.data.rates[symbol]
+            // else if (symbol == "TGJ23") x.Gass = 1 / data.data.rates[symbol]
         }
         return x
     }
