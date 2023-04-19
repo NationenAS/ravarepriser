@@ -64,6 +64,6 @@ export default async function handler(req, res) {
 
     let output = await getCommo()
     fs.writeFileSync('./commo.json', JSON.stringify(output))
-    res.end(output)
+    res.send(output)
 }
 
