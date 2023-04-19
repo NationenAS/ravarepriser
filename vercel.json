@@ -1,7 +1,7 @@
 {
     "crons": [
         {
-            "path": "/write-commo.js",
+            "path": "/api/write-commo",
             "schedule": " 0 6,9,12,15,18,21 * * *"
         }
     ]
