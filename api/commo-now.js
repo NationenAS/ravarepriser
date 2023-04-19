@@ -17,7 +17,7 @@ function getCommo() {
     let commo = {
         accessKey: 'ty2dpo40x38kyood3mzwd31lnik04p6y7hzj7l1wsu67548xd4yuj58np0rz',
         base: 'USD',
-        symbols: 'SOYBEAN,BRENTOIL,NOK,EUR,TGJ23',
+        symbols: 'SOYBEAN,BRENTOIL,NOK,EUR',
         urlBase: 'https://www.commodities-api.com/api/',
         urlParam: function() { 
             return `?access_key=${this.accessKey}&base=${this.base}&symbols=${this.symbols}`

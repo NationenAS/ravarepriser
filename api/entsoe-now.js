@@ -22,10 +22,10 @@ function getEl(commo) {
         end: entsoeDateTime(tomorrow, '2300'),
         domains: [
             ['Øst', '10YNO-1--------2'],
-            ['Sør', '10YNO-2--------T'],
-            ['Midt', '10YNO-3--------J'],
+            // ['Sør', '10YNO-2--------T'],
+            // ['Midt', '10YNO-3--------J'],
             ['Nord', '10YNO-4--------9'],
-            ['Vest', '10Y1001A1001A48H'],
+            // ['Vest', '10Y1001A1001A48H'],
         ],
         urlBase: 'https://web-api.tp.entsoe.eu/api',
         urlParam: function () {
