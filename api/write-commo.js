@@ -1,5 +1,3 @@
-const { XMLParser } = require("fast-xml-parser")
-const parser = new XMLParser()
 const fs = require("fs")
 
 function getCommo() {
