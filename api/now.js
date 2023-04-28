@@ -1,5 +1,5 @@
 const { getEl } = require("./entsoe-now")
-const { getCommo } = require("./commo-now")
+const { read } = require("./read")
 
 export default async function handler(req, res) {
   
@@ -16,7 +16,7 @@ export default async function handler(req, res) {
   // ----- //
 
   // Fetch
-  let c = await getCommo()
+  let c = await read()
   let e = await getEl(c)
   // let combined = [...e, ...c]
   // let output = combined.reduce((obj, item) => Object.assign(obj, { [item.name]: item.data }), {})
