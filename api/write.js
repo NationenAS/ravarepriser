@@ -30,9 +30,12 @@ export default async function handler(req, res) {
     const vars = {
         data: c
     }
-    
+
     client.request(createNewNow, vars)
-        .then(data => console.log("Write ok:", data))
+        .then(data => {
+            console.log("Write ok:", data)
+            res.send("Write ok.")
+        })
         .catch(error => console.log(error))
     
 }
